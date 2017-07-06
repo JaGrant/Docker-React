@@ -1,0 +1,5 @@
+# exclude everything
+www-data/*
+
+# exception to the rule
+!www-data/.gitkeep
