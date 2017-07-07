@@ -2,30 +2,34 @@
 echo "---- startServices.sh ---> Configuring container enviroment"
 # ======================== Preparing container ========================
 
-# ============================== Cron =================================
-# -- see scripts/export-db for cron task
-# -- exports database dump data every 6 hours to db-data/cron-exports
-service cron start
-
 # ========================= MYSQL CONFIG ==============================
 
 # -- set mysql ownership, group and permissions
-chown -R mysql /var/lib/mysql
-chgrp -R mysql /var/lib/mysql
-chmod 755 /var/lib/mysql
 
-# -- define mysql home directory (it's undefined for some reason on debian based distros)
-usermod -d /var/lib/mysql/ mysql
-
-# -- run mysql
-service mysql start
-
-# -- connect to mysql client and create database user
-mysql -uroot -hlocalhost -P6603 <<END
-CREATE USER 'newuser'@'%' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'%';
-END
+#
+cd site
+#npm init
+#npm install -g webpack
+#npm install -S webpack
+#npm install -S jquery
+#npm install -S babel-loader
+#npm install -S babel-plugin-add-module-exports
+#npm install -S babel-plugin-react-html-attrs
+#npm install -S babel-plugin-transform-class-properties
+#npm install -S babel-plugin-transform-decorators-legacy
+#npm install -S babel-preset-es2015
+#npm install -S babel-preset-react
+#npm install -S babel-preset-stage-0
+#npm install -S react
+#npm install -S react-dom
+#npm install -S webpack
+#npm install -S webpack-dev-server
+#npm install -S react-router
+#npm install react-router-active-component
+#npm install -S history@1
+npm run dev
 
 # ============================= Hold Container ========================
 # -- prevent the container from exiting
+echo "entering sleep loop"
 while true;do sleep 3600;done

@@ -1,4 +1,4 @@
-ContainerName = "DockerReact"
+ContainerName = "dockerreact"
 ContainerVersion = "1.0"
 
 ContainerID = `docker ps -a | grep -P "$(ContainerName)[\s]+" | awk '{print $$1}'`
@@ -72,11 +72,9 @@ run:
 	@ docker run \
 	--detach \
 	--name=$(ContainerName) \
-	--env="MYSQL_ROOT_PASSWORD=password" \
-	--publish 6603:3306 \
-	--volume=$(ContainerDir)/conf.d:/etc/mysql/conf.d \
-	--volume=$(ContainerDir)/db-data:/var/lib/mysql \
-	--volume=$(ContainerDir)/db-exports:/db-exports \
+	--publish 8080:8080 \
+	--publish 3000:3000 \
+	--volume=$(ContainerDir)/www-data/React-SiteTemplate:/site \
 	$(ContainerName)
 	@ echo ""
 	@ echo ""
