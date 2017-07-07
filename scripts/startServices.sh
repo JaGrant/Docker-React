@@ -2,13 +2,9 @@
 echo "---- startServices.sh ---> Configuring container enviroment"
 # ======================== Preparing container ========================
 
-# ========================= MYSQL CONFIG ==============================
-
-# -- set mysql ownership, group and permissions
-
-#
 cd site
 #npm init
+npm install
 #npm install -g webpack
 #npm install -S webpack
 #npm install -S jquery
